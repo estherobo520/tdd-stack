@@ -26,14 +26,14 @@ public class TddStackTest {
     @Test
     public void TddStack(long stackDepth) {
         stackDepth = TddStack.DEFAULT_DEPTH;
-        assertEquals(stackDepth, stackDepth);
+        assertEquals(100, TddStack.DEFAULT_DEPTH);
     }
 
     //check that calling isEmpty() on a newly created stack returns "true"
     @Test
     public void isEmptyTest() {
         //return true;
-        assertEquals(true, true);
+        assertEquals(true, TddStack.isEmpty());
 
     }
 
@@ -41,14 +41,14 @@ public class TddStackTest {
     @Test
     public void isFullTest() {
         //return false;
-        assertEquals(false, false);
+        assertEquals(false, TddStack.isFull());
     }
 
     //check that calling pop() on a newly created stack returns "null"
     @Test
     public void popTest() {
         //return null;
-        assertEquals(null, null);
+        assertEquals(null, tddStack);
     }
 
     //check that when a IStackable is pushed on the TddStack, then isEmpty() returns false
@@ -56,7 +56,7 @@ public class TddStackTest {
     public void isEmptyTestTwo(TddStack tddStack) {
         tddStack.push(stackableOne);
         //return false;
-        assertEquals(false, true);
+        assertEquals(false, TddStack.isEmpty());
     }
 
     //Instantiate a TddStack with a depth of 3. Implement a test that checks that isFull() returns true when three IStackable objects are pushed onto it
@@ -66,6 +66,6 @@ public class TddStackTest {
         tddStack.push(stackableTwo);
         tddStack.push(stackableThree);
         //return true;
-        assertEquals(true, false);
+        assertEquals(true, TddStack.isFull());
     }
 }

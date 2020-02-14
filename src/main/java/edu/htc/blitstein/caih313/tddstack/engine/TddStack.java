@@ -11,10 +11,10 @@ public class TddStack {
     public TddStack() {}
     public TddStack(long stackDepth) {}
 
-    public boolean isEmpty() {
+    public static boolean isEmpty() {
         return false;
     }
-    public boolean isFull() {
+    public static boolean isFull() {
         return false;
     }
 
