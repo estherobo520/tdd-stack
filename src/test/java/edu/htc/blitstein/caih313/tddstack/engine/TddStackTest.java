@@ -1,19 +1,14 @@
 package edu.htc.blitstein.caih313.tddstack.engine;
 
 import edu.htc.blitstein.caih313.tddstack.IStackable;
+import edu.htc.blitstein.caih313.tddstack.resource.campus.Faculty;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import static junit.framework.TestCase.assertEquals;
+import static junit.framework.TestCase.*;
 
 public class TddStackTest {
-
-    TddStack tddStack = new TddStack();
-    IStackable stackableOne;
-    IStackable stackableTwo;
-    IStackable stackableThree;
-
 
     @Before
     public void setUp() throws Exception {
@@ -29,43 +24,55 @@ public class TddStackTest {
         assertEquals(100, TddStack.DEFAULT_DEPTH);
     }
 
-    //check that calling isEmpty() on a newly created stack returns "true"
     @Test
     public void isEmptyTest() {
-        //return true;
-        assertEquals(true, TddStack.isEmpty());
+        TddStack tddStack = new TddStack();
+        assertTrue(tddStack.isEmpty());
 
     }
 
-    //check that calling isFull() on a newly created stack returns "false"
     @Test
     public void isFullTest() {
-        //return false;
-        assertEquals(false, TddStack.isFull());
+        TddStack tddStack = new TddStack();
+        assertFalse(tddStack.isFull());
     }
 
-    //check that calling pop() on a newly created stack returns "null"
     @Test
     public void popTest() {
-        //return null;
-        assertEquals(null, tddStack);
+        TddStack tddStack = new TddStack();
+        assertNull(tddStack);
     }
 
-    //check that when a IStackable is pushed on the TddStack, then isEmpty() returns false
     @Test
-    public void isEmptyTestTwo(TddStack tddStack) {
+    public void isEmptyWhenStackableIsPushedOnTddStackTest() {
+        TddStack tddStack = new TddStack();
+        IStackable stackableOne = null;
         tddStack.push(stackableOne);
-        //return false;
-        assertEquals(false, TddStack.isEmpty());
+        tddStack.stackDepth = 1;
+        assertFalse(tddStack.isEmpty());
     }
 
-    //Instantiate a TddStack with a depth of 3. Implement a test that checks that isFull() returns true when three IStackable objects are pushed onto it
     @Test
-    public void isFullTestTwo(TddStack tddStack) {
+    public void isFullWhenAddThreeStackablesTest() {
+        TddStack tddStack = new TddStack();
+        tddStack.stackDepth = 3;
+        IStackable stackableOne = null;
+        IStackable stackableTwo = null;
+        IStackable stackableThree = null;
         tddStack.push(stackableOne);
         tddStack.push(stackableTwo);
         tddStack.push(stackableThree);
-        //return true;
-        assertEquals(true, TddStack.isFull());
+        assertTrue(tddStack.isFull());
+    }
+
+
+    @Test
+    public void testPopIsPush() {
+        TddStack tddStack = new TddStack();
+        //Faculty implements IStackable
+        IStackable iStackableOrig = new Faculty();
+        tddStack.push(iStackableOrig);
+        IStackable iStackablePopped = tddStack.pop();
+        assertEquals(iStackableOrig, iStackablePopped);
     }
 }

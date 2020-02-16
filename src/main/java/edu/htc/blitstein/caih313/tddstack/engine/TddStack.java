@@ -4,7 +4,8 @@ import edu.htc.blitstein.caih313.tddstack.IStackable;
 
 public class TddStack {
     public static long DEFAULT_DEPTH = 100;
-    public long stackDepth;
+    public static int stackDepth;
+    public long stackDepthLong;
     IStackable stackable;
     public long tddStack = 3;
 
@@ -12,10 +13,20 @@ public class TddStack {
     public TddStack(long stackDepth) {}
 
     public static boolean isEmpty() {
-        return false;
+        if(stackDepth <= 0) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
     public static boolean isFull() {
-        return false;
+        if(stackDepth > 0) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
     public void push(IStackable stackable) {}
